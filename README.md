@@ -818,7 +818,7 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 	
 <h1 id="CHAT">Rotas de CHAT</h1>
 
-<h2>Retornar as conversas entre o usuário autenticado e o usuário com o ID fornecido = GET</h2>
+<h2>Retornar as conversas entre o usuário autenticado e o usuário com o ID fornecido - GET</h2>
 
 <p><strong>Endpoint:</strong> /chats/{id}</p>
 
