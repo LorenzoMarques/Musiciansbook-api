@@ -864,7 +864,7 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 </pre>
 
 <!-- POST /chat/:userId -->
-<h2>Envia uma mensagem do usuário autenticado para o usuário com o ID fornecido - POST /</h2>
+<h2>Envia uma mensagem do usuário autenticado para o usuário com o ID fornecido - POST</h2>
 <p><strong>Endpoint:</strong> /chats/{id}</p>
 
 <h3>Request</h3>
