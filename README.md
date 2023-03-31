@@ -3,6 +3,7 @@
 # Tabela de conteúdo
 
 - [Sobre](#Sobre)
+- [Front-end](#front-end)
 - [Integrantes](#Integrantes)
 - [Aplicação](#Aplicação)
 - [Rotas](#Rotas)
@@ -909,3 +910,8 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 }
 </pre>
 
+<h2 id="front-end">Front-end da aplicação</h2>
+
+<section>
+    <a href="https://github.com/LorenzoMarques/MusiciansBook-front-end">Acesse o repositório contendo o back-end da aplicação clicando aqui!</a>
+</section>
