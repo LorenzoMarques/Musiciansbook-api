@@ -913,5 +913,5 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 <h2 id="front-end">Front-end da aplicação</h2>
 
 <section>
-    <a href="https://github.com/LorenzoMarques/MusiciansBook-front-end">Acesse o repositório contendo o back-end da aplicação clicando aqui!</a>
+    <a href="https://github.com/LorenzoMarques/MusiciansBook-front-end">Acesse o repositório contendo o front-end da aplicação clicando aqui!</a>
 </section>
