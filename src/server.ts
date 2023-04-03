@@ -11,7 +11,7 @@ const server = app.listen(process.env.PORT || port, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: "https://musicians-book.vercel.app",
+    origin: "https://musicians-book.vercel.app/",
     credentials: true,
   },
 });
