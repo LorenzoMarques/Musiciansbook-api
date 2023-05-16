@@ -1,10 +1,14 @@
 import { AppDataSource } from "../../data-source";
-import { Songs } from "../../entities/song.entity";
+import { Posts } from "../../entities/post.entity";
 
 const listSongsService = async () => {
-  const songsRepository = await AppDataSource.getRepository(Songs);
+  const postsRepository = await AppDataSource.getRepository(Posts);
 
-  const songs = await songsRepository.find();
+  const songs = await postsRepository.find({
+    where: {
+      type: "song",
+    },
+  });
 
   const formattedSongs = songs.map((song) => {
     const { password, ...userWithoutPassword } = song.user;

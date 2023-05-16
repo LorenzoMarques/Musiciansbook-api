@@ -1,10 +1,9 @@
 import { AppDataSource } from "../../data-source";
-import { Images } from "../../entities/image.entity";
-import { Songs } from "../../entities/song.entity";
+import { Posts } from "../../entities/post.entity";
 import { Users } from "../../entities/user.entity";
 import followersListService from "../followers/listFollowers.service";
 
-const listAllUserPosts = async (id: string) => {
+const listAllUser = async (id: string) => {
   const user = await AppDataSource.getRepository(Users)
     .createQueryBuilder("users")
     .select(["users.id", "users.name", "users.email"])
@@ -17,16 +16,18 @@ const listAllUserPosts = async (id: string) => {
 
   const followers = await followersListService({ user_id: id });
 
-  const images = await AppDataSource.getRepository(Images)
-    .createQueryBuilder("images")
+  const images = await AppDataSource.getRepository(Posts)
+    .createQueryBuilder("posts")
     .select()
-    .where("images.user_id = :id", { id: user.id })
+    .where("posts.user_id = :id", { id: user.id })
+    .andWhere("posts.type = :type", { type: "image" })
     .getMany();
 
-  const songs = await AppDataSource.getRepository(Songs)
-    .createQueryBuilder("images")
+  const songs = await AppDataSource.getRepository(Posts)
+    .createQueryBuilder("posts")
     .select()
-    .where("images.user_id = :id", { id: user.id })
+    .where("posts.user_id = :id", { id: user.id })
+    .andWhere("posts.type = :type", { type: "song" })
     .getMany();
 
   const data = {
@@ -39,4 +40,4 @@ const listAllUserPosts = async (id: string) => {
   return data;
 };
 
-export default listAllUserPosts;
+export default listAllUser;

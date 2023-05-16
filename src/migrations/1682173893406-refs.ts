@@ -1,26 +1,26 @@
 import { MigrationInterface, QueryRunner, TableForeignKey } from "typeorm";
 
-export class refs1672803220847 implements MigrationInterface {
+export class refs1682173893406 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createForeignKey(
-      "images",
+      "posts",
       new TableForeignKey({
-        name: "ImagesFK",
+        name: "PostsFK",
         columnNames: ["user_id"],
         referencedColumnNames: ["id"],
         referencedTableName: "users",
       })
     );
 
-    await queryRunner.createForeignKey(
-      "songs",
-      new TableForeignKey({
-        name: "SongsFK",
-        columnNames: ["user_id"],
-        referencedColumnNames: ["id"],
-        referencedTableName: "users",
-      })
-    );
+    // await queryRunner.createForeignKey(
+    //   "songs",
+    //   new TableForeignKey({
+    //     name: "SongsFK",
+    //     columnNames: ["user_id"],
+    //     referencedColumnNames: ["id"],
+    //     referencedTableName: "users",
+    //   })
+    // );
 
     await queryRunner.createForeignKey(
       "followers",
@@ -59,6 +59,26 @@ export class refs1672803220847 implements MigrationInterface {
         columnNames: ["to"],
         referencedColumnNames: ["id"],
         referencedTableName: "users",
+      })
+    );
+
+    await queryRunner.createForeignKey(
+      "likes",
+      new TableForeignKey({
+        name: "UserLikeFK",
+        columnNames: ["user_id"],
+        referencedColumnNames: ["id"],
+        referencedTableName: "users",
+      })
+    );
+
+    await queryRunner.createForeignKey(
+      "likes",
+      new TableForeignKey({
+        name: "PostLikeFK",
+        columnNames: ["post_id"],
+        referencedColumnNames: ["id"],
+        referencedTableName: "posts",
       })
     );
   }

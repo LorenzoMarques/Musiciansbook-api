@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class imagesMigration1665511424934 implements MigrationInterface {
+export class like1682173682537 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "images",
+        name: "likes",
         columns: [
           {
             name: "id",
@@ -13,25 +13,12 @@ export class imagesMigration1665511424934 implements MigrationInterface {
             generationStrategy: "uuid",
           },
           {
-            name: "name",
-            type: "varchar",
-          },
-          {
             name: "user_id",
             type: "uuid",
           },
           {
-            name: "created_at",
-            type: "varchar",
-          },
-          {
-            name: "url",
-            type: "varchar",
-          },
-          {
-            name: "text",
-            type: "varchar",
-            isNullable: true,
+            name: "post_id",
+            type: "uuid",
           },
         ],
       })
@@ -39,6 +26,6 @@ export class imagesMigration1665511424934 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "images"`);
+    await queryRunner.query(`DROP TABLE "likes"`);
   }
 }

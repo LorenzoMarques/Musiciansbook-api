@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { Users } from "./user.entity";
 
 @Entity()
-export class Images {
+export class Posts {
   @PrimaryColumn("uuid")
   readonly id: string;
 
@@ -15,6 +15,12 @@ export class Images {
 
   @Column()
   created_at: string;
+
+  @Column()
+  type: string;
+
+  @Column()
+  likes: number;
 
   @Column()
   url: string;

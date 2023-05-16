@@ -237,7 +237,6 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem9AbWFpbC5jb20iLCJpYXQiOjE2ODAxNzYzODksImV4cCI6MTY4MDI2Mjc4OSwic3ViIjoiNTZhYmZmY2YtYzQwZS00MGFlLTllN2MtODIzMzdhYTcwMzFkIn0.Sb1wQCyGdFldZKnJ622_nrjvEBpdnlzUPJ3webFBIDM
 </pre>
 
-
 <h3>Response</h3>
 <pre>
 {
@@ -334,7 +333,6 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem9AbWFpbC5jb20iLCJpYXQiOjE2ODAxNzYzODksImV4cCI6MTY4MDI2Mjc4OSwic3ViIjoiNTZhYmZmY2YtYzQwZS00MGFlLTllN2MtODIzMzdhYTcwMzFkIn0.Sb1wQCyGdFldZKnJ622_nrjvEBpdnlzUPJ3webFBIDM
 </pre>
 
-
 <h3>Response</h3>
 <pre>
 {
@@ -386,7 +384,6 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem9AbWFpbC5jb20iLCJpYXQiOjE2ODAxNzYzODksImV4cCI6MTY4MDI2Mjc4OSwic3ViIjoiNTZhYmZmY2YtYzQwZS00MGFlLTllN2MtODIzMzdhYTcwMzFkIn0.Sb1wQCyGdFldZKnJ622_nrjvEBpdnlzUPJ3webFBIDM
 </pre>
 
-
 <h3>Response</h3>
 <pre>
 {
@@ -413,14 +410,15 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 	<tr>
 		<th>Parâmetro</th>
 
-		<th>Tipo</th>
-		<th>Descrição</th>
-	</tr>
-	<tr>
-		<td>Nenhum</td>
-		<td>Nenhum</td>
-		<td>Nenhum</td>
-	</tr>
+    	<th>Tipo</th>
+    	<th>Descrição</th>
+    </tr>
+    <tr>
+    	<td>Nenhum</td>
+    	<td>Nenhum</td>
+    	<td>Nenhum</td>
+    </tr>
+
 </table>
 
 <h4>Headers</h4>
@@ -906,6 +904,42 @@ Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem
 	"to": "b708d2d3-45a1-4901-b4e7-b74fd8c96eb5",
 	"text": "tudo bem?"
 }
+</pre>
+
+<h1 id="CHAT">Rotas de LIKE</h1>
+
+<h2>Dar ou desfazer like de um post - POST</h2>
+
+<p><strong>Caso o usuário já tenha dado like no post com o ID fornecido o like será desfeito</strong></p>
+
+<p><strong>Endpoint:</strong> /chats/{post_id}</p>
+
+<h3>Request</h3>
+
+<h4>Parâmetros</h4>
+<table>
+	<tr>
+		<th>Parâmetro</th>
+		<th>Tipo</th>
+		<th>Descrição</th>
+	</tr>
+	<tr>
+		<td>post_id</td>
+		<td>string</td>
+		<td>ID do post que o usuário irá dar ou desfazer o like</td>
+	</tr>
+</table>
+
+<h4>Headers</h4>
+<pre>
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVuem9AbWFpbC5jb20iLCJpYXQiOjE2ODAxNzYzODksImV4cCI6MTY4MDI2Mjc4OSwic3ViIjoiNTZhYmZmY2YtYzQwZS00MGFlLTllN2MtODIzMzdhYTcwMzFkIn0.Sb1wQCyGdFldZKnJ622_nrjvEBpdnlzUPJ3webFBIDM
+</pre>
+
+<h3>Exemplo de resposta</h3>
+<pre>
+	{
+		"like": "liked"
+	}
 </pre>
 
 <h2 id="front-end">Front-end da aplicação</h2>

@@ -1,39 +1,48 @@
-import { ConnectionIsNotSetError } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { Images } from "../../entities/image.entity";
-import { Songs } from "../../entities/song.entity";
+import { Likes } from "../../entities/like.entity";
+import { Posts } from "../../entities/post.entity";
 
-const feedService = async ({ page }: any) => {
-  const songsRepository = await AppDataSource.getRepository(Songs);
-  const imagesRepository = await AppDataSource.getRepository(Images);
+const feedService = async ({ page, user_id }: any) => {
+  const postsRepository = await AppDataSource.getRepository(Posts);
+  const likesRepository = await AppDataSource.getRepository(Likes);
   const limit = 5;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   page = Number(page);
 
-  const songs = await songsRepository.find();
-
-  const formattedSongs = songs.map((song) => {
-    const { password, ...userWithoutPassword } = song.user;
-    return { ...song, user: userWithoutPassword };
+  const allPosts = await postsRepository.find({
+    order: {
+      created_at: "DESC",
+    },
   });
 
-  const images = await imagesRepository.find();
-
-  const formattedImages = images.map((image) => {
-    const { password, ...userWithoutPassword } = image.user;
-    return { ...image, user: userWithoutPassword };
+  const formattedPosts = allPosts.map((post) => {
+    const { password, ...userWithoutPassword } = post.user;
+    return { ...post, user: userWithoutPassword };
   });
 
-  let allItems = [...formattedSongs, ...formattedImages];
-  const sortedAsc = allItems.sort(
-    (objA, objB) => Date.parse(objA.created_at) - Date.parse(objB.created_at)
-  );
-  allItems = sortedAsc.reverse();
+  const likes = await likesRepository.find({
+    where: {
+      user_id,
+    },
+  });
+
+  const results = formattedPosts.slice(startIndex, endIndex).map((element) => {
+    const isAlreadyLiked = likes.find((like) => {
+      return like.post_id === element.id;
+    });
+
+    if (isAlreadyLiked) {
+      return { ...element, liked: true };
+    }
+
+    return { ...element, liked: false };
+  });
+
   const result = {
-    nextPage: endIndex < allItems.length && page + 1,
+    nextPage: endIndex < formattedPosts.length && page + 1,
     prevPage: startIndex > 0 && page - 1,
-    results: allItems.slice(startIndex, endIndex),
+    results: results,
   };
 
   if (result.results[0]) {

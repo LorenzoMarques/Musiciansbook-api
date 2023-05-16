@@ -1,10 +1,14 @@
 import { AppDataSource } from "../../data-source";
-import { Images } from "../../entities/image.entity";
+import { Posts } from "../../entities/post.entity";
 
 const listImagesService = async () => {
-  const imagesRepository = await AppDataSource.getRepository(Images);
+  const imagesRepository = await AppDataSource.getRepository(Posts);
 
-  const images = await imagesRepository.find();
+  const images = await imagesRepository.find({
+    where: {
+      type: "image",
+    },
+  });
 
   const formattedImages = images.map((image) => {
     const { password, ...userWithoutPassword } = image.user;

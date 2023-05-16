@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import { Songs } from "../../entities/song.entity";
+import { Posts } from "../../entities/post.entity";
 import { IDeleteCreateSong } from "../../interfaces/songs.interfaces";
 
 const createSongService = async ({
@@ -8,17 +8,19 @@ const createSongService = async ({
   text,
   url,
 }: IDeleteCreateSong) => {
-  const songRepository = AppDataSource.getRepository(Songs);
+  const postsRepository = AppDataSource.getRepository(Posts);
 
-  const song = new Songs();
+  const song = new Posts();
 
   song.name = name;
   song.user_id = user_id;
   song.text = text;
   song.url = url;
+  song.type = "song";
+  song.likes = 0;
 
-  songRepository.create(song);
-  await songRepository.save(song);
+  postsRepository.create(song);
+  await postsRepository.save(song);
 
   return song;
 };

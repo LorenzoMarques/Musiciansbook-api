@@ -1,6 +1,6 @@
 import { ICreateImage } from "../../interfaces/images.interfaces";
 import { AppDataSource } from "../../data-source";
-import { Images } from "../../entities/image.entity";
+import { Posts } from "../../entities/post.entity";
 
 const createImageService = async ({
   name,
@@ -8,15 +8,18 @@ const createImageService = async ({
   url,
   text,
 }: ICreateImage) => {
-  const imageRepository = AppDataSource.getRepository(Images);
+  const postsRepository = AppDataSource.getRepository(Posts);
 
-  const image = new Images();
+  const image = new Posts();
 
   image.name = name;
   image.user_id = user_id;
   image.url = url;
   image.text = text;
-  await imageRepository.save(image);
+  image.type = "image";
+  image.likes = 0;
+
+  await postsRepository.save(image);
 
   return image;
 };

@@ -1,23 +1,24 @@
 import { Entity, Column, PrimaryColumn, OneToMany } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Posts } from "./post.entity";
+import { Users } from "./user.entity";
 
 @Entity()
-export class Users {
+export class Likes {
   @PrimaryColumn("uuid")
   readonly id: string;
 
+  @OneToMany((type) => Users, (user) => user.id)
+  users: Users[];
+
+  @OneToMany((type) => Posts, (posts) => posts.user_id)
+  posts: Posts;
+
   @Column()
-  name: string;
-
-  @Column({ unique: true })
-  email: string;
+  user_id: string;
 
   @Column()
-  password: string;
-
-  @OneToMany((type) => Posts, (post) => post.user_id)
-  posts: Posts[];
+  post_id: string;
 
   constructor() {
     if (!this.id) {

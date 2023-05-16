@@ -5,6 +5,7 @@ import routerSongs from "./routes/songs.routes";
 import routerFollow from "./routes/follow.routes";
 import routerFeed from "./routes/feed.routes";
 import routerChats from "./routes/chat.routes";
+import routerLikes from "./routes/like.routes";
 
 import cors from "cors";
 
@@ -15,13 +16,12 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/load/images", express.static("src/images"));
-app.use("/load/songs", express.static("src/songs"));
 app.use(routerUsers);
 app.use(routerImages);
 app.use(routerSongs);
 app.use(routerFollow);
 app.use(routerFeed);
 app.use(routerChats);
+app.use(routerLikes);
 
 export default app;
