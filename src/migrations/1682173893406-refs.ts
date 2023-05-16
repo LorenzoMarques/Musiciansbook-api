@@ -12,16 +12,6 @@ export class refs1682173893406 implements MigrationInterface {
       })
     );
 
-    // await queryRunner.createForeignKey(
-    //   "songs",
-    //   new TableForeignKey({
-    //     name: "SongsFK",
-    //     columnNames: ["user_id"],
-    //     referencedColumnNames: ["id"],
-    //     referencedTableName: "users",
-    //   })
-    // );
-
     await queryRunner.createForeignKey(
       "followers",
       new TableForeignKey({
