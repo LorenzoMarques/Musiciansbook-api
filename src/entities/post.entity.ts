@@ -1,6 +1,14 @@
-import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  ManyToOne,
+  JoinColumn,
+  OneToMany,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Users } from "./user.entity";
+import { Comments } from "./comment.entity";
 
 @Entity()
 export class Posts {
@@ -27,6 +35,9 @@ export class Posts {
 
   @Column({ nullable: true })
   text: string;
+
+  @OneToMany((type) => Comments, (comment) => comment.post_id)
+  comments: Comments[];
 
   @ManyToOne((type) => Users, { eager: true })
   @JoinColumn({

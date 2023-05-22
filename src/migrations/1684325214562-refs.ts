@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, TableForeignKey } from "typeorm";
 
-export class refs1684248389555 implements MigrationInterface {
+export class refs1684325214562 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createForeignKey(
       "posts",
@@ -71,6 +71,26 @@ export class refs1684248389555 implements MigrationInterface {
         referencedTableName: "posts",
       })
     );
+
+    await queryRunner.createForeignKey(
+      "comments",
+      new TableForeignKey({
+        name: "PostCommentFK",
+        columnNames: ["post_id"],
+        referencedColumnNames: ["id"],
+        referencedTableName: "posts",
+      })
+    );
+
+    await queryRunner.createForeignKey(
+      "comments",
+      new TableForeignKey({
+        name: "CommentUserFK",
+        columnNames: ["user_id"],
+        referencedColumnNames: ["id"],
+        referencedTableName: "users",
+      })
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
@@ -80,5 +100,9 @@ export class refs1684248389555 implements MigrationInterface {
     await queryRunner.dropForeignKey("followers", "FollowedFK");
     await queryRunner.dropForeignKey("chats", "FromFK");
     await queryRunner.dropForeignKey("chats", "ToFK");
+    await queryRunner.dropForeignKey("comments", "CommentUserFK");
+    await queryRunner.dropForeignKey("comments", "PostCommentFK");
+    await queryRunner.dropForeignKey("likes", "UserLikeFK");
+    await queryRunner.dropForeignKey("likes", "PostLikeFK");
   }
 }

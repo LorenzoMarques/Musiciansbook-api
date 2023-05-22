@@ -6,6 +6,7 @@ import routerFollow from "./routes/follow.routes";
 import routerFeed from "./routes/feed.routes";
 import routerChats from "./routes/chat.routes";
 import routerLikes from "./routes/like.routes";
+import routerComments from "./routes/comment.routes";
 
 import cors from "cors";
 
@@ -23,5 +24,6 @@ app.use(routerFollow);
 app.use(routerFeed);
 app.use(routerChats);
 app.use(routerLikes);
+app.use(routerComments);
 
 export default app;
